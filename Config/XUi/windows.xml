@@ -1,0 +1,91 @@
+
+<configs>
+    <!-- Center the ingame menu (esc menu) and the options menu -->
+    <setattribute xpath="//window[@name='ingameMenu']" name="anchor">CenterCenter</setattribute>
+    <setattribute xpath="//window[@name='ingameMenu']" name="pos">-125,0</setattribute>
+
+    <!-- Hide the default food/water bars -->
+    <remove xpath="//window[@name='windowToolbelt']/rect/rect[@stat_type='Food']" />
+    <remove xpath="//window[@name='windowToolbelt']/rect/rect[@stat_type='Water']" />
+
+    <setattribute xpath="//window[@name='windowToolbelt']/rect/sprite[2 and 3 and 4]" name="height">12</setattribute>
+    <setattribute xpath="//window[@name='windowToolbelt']/rect/sprite[2 and 3 and 4]" name="pos">0,14</setattribute>
+
+    <setattribute xpath="//window[@name='HUDLeftStatBars']/rect[1]" name="rows">4</setattribute>
+    <setattribute xpath="//window[@name='HUDLeftStatBars']/rect[1]/rect[2]/sprite[@name='sprint']" name="pos">170,28</setattribute>
+
+    <!-- Create our food/water bars that look good -->
+    <append xpath="//window[@name='HUDLeftStatBars']/rect[1]">
+        <rect width="171" height="46" pos="175,-100" controller="HUDStatBar" stat_type="Food" visibile="{statvisible}">
+            <sprite depth="1" name="border" color="0,0,0,128" type="sliced"/>
+			<sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
+
+            <filledsprite depth="3" name="BarContent" color="0,255,54,128" width="169" type="filled" fill="0" />
+            <sprite depth="6" name="Icon" sprite="ui_game_symbol_fork" size="35,35" pos="26,-24" pivot="center" foregroundlayer="true"/>
+            <label depth="4" name="TextContent" text="{statcurrentwithmax}" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" width="125" height="35" />
+
+            <sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
+			<filledsprite depth="8" name="background" color="0,0,0,255" width="171" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
+			<filledsprite depth="3" name="background" color="0,0,0,255" width="170" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
+        </rect>
+
+        <rect width="171" height="46" pos="175,-50" controller="HUDStatBar" stat_type="Water" visibile="{statvisible}">
+            <sprite depth="1" name="border" color="0,0,0,128" type="sliced"/>
+			<sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
+
+            <filledsprite depth="3" name="BarContent" color="0,54,255,160" width="169" type="filled" fill="0" />
+            <sprite depth="6" name="Icon"  sprite="ui_game_symbol_water" size="35,35" pos="26,-24" pivot="center" foregroundlayer="true"/>
+            <!--<label depth="4" name="TextContent" text="{# length(statfill)==0 ? '' : Truncate((float(statfill) * (cvar('$LastPlayerLevel') + 100)) - ((float(statfill) * (cvar('$LastPlayerLevel') + 100))/100))}" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" width="125" height="35"/>-->
+            <label depth="4" name="TextContent" text="{statcurrentwithmax}" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" width="125" height="35" />
+
+            <sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
+			<filledsprite depth="8" name="background" color="0,0,0,255" width="171" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
+			<filledsprite depth="3" name="background" color="0,0,0,255" width="170" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
+        </rect>
+    </append>
+    
+    <!-- Target Window -->
+    <remove xpath="//window[@name='windowTargetBar']/rect"/>
+    <setattribute xpath="//window[@name='windowTargetBar']" name="visibility">always</setattribute>
+    <append xpath="//window[@name='windowTargetBar']">
+        <rect anchor="CenterTop" pos="-150,-175" width="150" height="24" visible="{visible}">
+            <label depth="1" name="TextContent" pos="0, -5" font_size="18" color="[white]" justify="left" text="{name}" height="24" effect="shadow" effect_color="0,0,0,255" effect_distance="2,2"/>
+        </rect>
+
+        <rect anchor="CenterTop" pos="-150,-200" width="300" height="36" visible="{visible}" >
+			<sprite depth="1" name="border" color="0,0,0,180" type="sliced" width="300" globalopacity="false"/>
+            <sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
+
+			<filledsprite depth="2" name="BarContent" type="filled" color="201,14,158,180" width="300" fill="{fill}" globalopacity="false"/> 
+			<label depth="3" name="TextContent" pos="0,-5" font_size="28" color="[white]" justify="center" pivot="topleft" text="{currentwithmax}" height="30" effect="shadow" effect_color="0,0,0,255" effect_distance="2,2"/>
+		</rect>
+    </append>
+
+
+    <!-- Entering popup.. needs to be smaller -->
+    <remove xpath="//window[@name='windowEntering']/rect"/> <!-- Remove the rect and readd it, makes it easier to modify -->
+    <append xpath="//window[@name='windowEntering']">
+        <rect pos="-150,-85" width="300" height="75" visible="{visible}" >
+			<!-- <sprite depth="1" name="background" sprite="menu_empty3px" color="65,65,65,245" type="sliced" /> -->
+			<label depth="3" name="TextContent" pos="5,-14" font_size="32" color="[white]" pivot="topleft" text="{locationname}" justify="center" width="290" height="60" effect="shadow" effect_color="0,0,0,255" effect_distance="2,2" />
+			
+			<grid padding="8,10" pos="150,-65" pivot="center" cols="8" cell_width="34" cell_height="32">
+				<sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible1}"/>
+				<sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible2}"/>
+				<sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible3}"/>
+				<sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible4}"/>
+				<sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible5}"/>
+				<sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible6}"/>
+				<sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible7}"/>
+				
+				<rect width="32" height="32" visible="{visible_half}">
+					<sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" type="filled" fill="0.5" color="214,101,73"/>
+					<sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" type="filled" fill="0.5" fillinvert="true" color="[black]"/>
+				</rect>
+			</grid>
+		</rect>
+
+    </append>
+  
+
+</configs>
