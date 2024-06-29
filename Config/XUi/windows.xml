@@ -8,14 +8,25 @@
     <remove xpath="//window[@name='windowToolbelt']/rect/rect[@stat_type='Food']" />
     <remove xpath="//window[@name='windowToolbelt']/rect/rect[@stat_type='Water']" />
 
-    <setattribute xpath="//window[@name='windowToolbelt']/rect/sprite[2 and 3 and 4]" name="height">12</setattribute>
-    <setattribute xpath="//window[@name='windowToolbelt']/rect/sprite[2 and 3 and 4]" name="pos">0,14</setattribute>
+    <!-- Adjust the exp bar to make it more visible -->
+    <remove xpath="//window[@name='windowToolbelt']/rect/sprite[2 and 3 and 4]" />
 
-    <setattribute xpath="//window[@name='HUDLeftStatBars']/rect[1]" name="rows">4</setattribute>
+    <append xpath="//window[@name='windowToolbelt']/rect">
+        <!-- Add unobtrusive level indicator -->
+        <label depth="1" name="TextContent" text="LEVEL: {cvar($LastPlayerLevel)}" pos="10,14" font_size="26" height="24" width="40" color="[gold]" effect="shadow" effect_color="0,0,0" effect_distance="1,1"/>
+        <sprite depth="1" pos="53,14" height="12" width="700" color="64,64,64,200" sprite="menu_empty2px" globalopacity="false" type="sliced" />
+		<sprite depth="9" pos="53,14" height="12" width="700" color="0,0,0,220" sprite="menu_empty2px" globalopacity="false" type="sliced" fillcenter="false" />
+		<sprite depth="4" pos="53,14" height="12" width="700" color="{xpcolor}" globalopacity="false" type="filled" fill="{xp}" />
+    </append>
+
+
+    <!-- Adjust the sprint indicator so our bars don't overlap -->
     <setattribute xpath="//window[@name='HUDLeftStatBars']/rect[1]/rect[2]/sprite[@name='sprint']" name="pos">170,28</setattribute>
 
     <!-- Create our food/water bars that look good -->
     <append xpath="//window[@name='HUDLeftStatBars']/rect[1]">
+
+        <!-- Food -->
         <rect width="171" height="46" pos="175,-100" controller="HUDStatBar" stat_type="Food" visibile="{statvisible}">
             <sprite depth="1" name="border" color="0,0,0,128" type="sliced"/>
 			<sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
@@ -29,13 +40,13 @@
 			<filledsprite depth="3" name="background" color="0,0,0,255" width="170" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
         </rect>
 
+        <!-- Water -->
         <rect width="171" height="46" pos="175,-50" controller="HUDStatBar" stat_type="Water" visibile="{statvisible}">
             <sprite depth="1" name="border" color="0,0,0,128" type="sliced"/>
 			<sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
 
             <filledsprite depth="3" name="BarContent" color="0,54,255,160" width="169" type="filled" fill="0" />
             <sprite depth="6" name="Icon"  sprite="ui_game_symbol_water" size="35,35" pos="26,-24" pivot="center" foregroundlayer="true"/>
-            <!--<label depth="4" name="TextContent" text="{# length(statfill)==0 ? '' : Truncate((float(statfill) * (cvar('$LastPlayerLevel') + 100)) - ((float(statfill) * (cvar('$LastPlayerLevel') + 100))/100))}" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" width="125" height="35"/>-->
             <label depth="4" name="TextContent" text="{statcurrentwithmax}" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" width="125" height="35" />
 
             <sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
@@ -49,11 +60,11 @@
     <setattribute xpath="//window[@name='windowTargetBar']" name="visibility">always</setattribute>
     <append xpath="//window[@name='windowTargetBar']">
         <rect anchor="CenterTop" pos="-150,-175" width="150" height="24" visible="{visible}">
-            <label depth="1" name="TextContent" pos="0, -5" font_size="18" color="[white]" justify="left" text="{name}" height="24" effect="shadow" effect_color="0,0,0,255" effect_distance="2,2"/>
+            <label depth="1" name="TextContent" pos="0, -5" font_size="20" color="[white]" justify="left" text="{name}" height="20" effect="shadow" effect_color="0,0,0,255" effect_distance="2,2"/>
         </rect>
 
         <rect anchor="CenterTop" pos="-150,-200" width="300" height="36" visible="{visible}" >
-			<sprite depth="1" name="border" color="0,0,0,180" type="sliced" width="300" globalopacity="false"/>
+			<sprite depth="3" name="border" color="0,0,0,255" type="sliced" width="300" globalopacity="false" fillcenter="false"/>
             <sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
 
 			<filledsprite depth="2" name="BarContent" type="filled" color="201,14,158,180" width="300" fill="{fill}" globalopacity="false"/> 
@@ -86,6 +97,22 @@
 		</rect>
 
     </append>
-  
+
+
+    <!-- Compass cluster-->
+    <remove xpath="//window[@name='windowCompass']/sprite[last()]" /> 
+    <append xpath="//window[@name='windowCompass']">
+
+            <label depth="2" pos="78, -55"  width="50" height="24" text="[{daycolor}]{daytitle}: {day}[-]" font_size="22" pivot="center" effect="shadow" effect_color="0,0,0" effect_distance="1,1" upper_case="true" justify="left"/>
+            <label depth="2" pos="415, -55"  width="60" height="24" text="[dea3a3]{time}[-]" font_size="22" pivot="center" effect="shadow" effect_color="0,0,0" effect_distance="1,1" upper_case="true" justify="left"/>
+
+            <rect name="content" depth="5" pos="265,10" height="239" controller="MapStats">
+					<sprite depth="2" name="tempIcon" width="19" height="19" pos="0,-55" sprite="ui_game_symbol_temperature" color="[iconColor]" foregroundlayer="true"/>
+					<label depth="2" name="tempLabel" pos="22,-55" width="250" height="24" text="[a3dea3]{playercoretemp}[-]" font_size="22" effect="shadow" effect_color="0,0,0" effect_distance="1,1"/>
+                  
+					<sprite depth="2" name="elevIcon" width="19" height="19" pos="-115,-55" sprite="ui_game_symbol_climb" color="[iconColor]" foregroundlayer="true"/>
+					<label depth="2" name="elevLabel" pos="-93,-55" width="250" height="24" text="[a3a3de]{mapelevation} M[-]" font_size="22" effect="shadow" effect_color="0,0,0" effect_distance="1,1"/> 
+			</rect>
+    </append>
 
 </configs>
