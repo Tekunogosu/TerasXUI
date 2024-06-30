@@ -1,0 +1,6 @@
+<configs>
+    <!-- Need to do more testing before I release this. -->
+<!--    <setattribute xpath="/controls/item_stack/rect/sprite[@name='quickswapIcon']" name="pos">30,5</setattribute>-->
+<!--    <setattribute xpath="/controls/item_stack/rect/sprite[@name='quickswapIcon']" name="size">24,24</setattribute>-->
+<!--    <setattribute xpath="/controls/item_stack/rect/sprite[@name='quickswapIcon']" name="color">64,64,64,128</setattribute>-->
+</configs>
