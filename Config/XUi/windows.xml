@@ -17,9 +17,10 @@
         <!-- Add unobtrusive level indicator -->
         <label depth="1" name="TextContent" text="LEVEL: {cvar($LastPlayerLevel)}" pos="10,14" font_size="26" height="24" width="40" color="[gold]" effect="shadow" effect_color="0,0,0" effect_distance="1,1"/>
         <sprite depth="1" pos="53,14" height="12" width="700" color="64,64,64,200" sprite="menu_empty2px" globalopacity="false" type="sliced" />
+        
         <sprite depth="9" pos="53,14" height="12" width="700" color="0,0,0,220" sprite="menu_empty2px" globalopacity="false" type="sliced" fillcenter="false" />
-<!--        <sprite depth="4" pos="53,14" height="12" width="700" color="{xpcolor}" globalopacity="false" type="filled" fill="{xp}" />-->
-        <sprite depth="4" pos="53,14" height="12" width="700" color="73, 71, 181" globalopacity="false" type="filled" fill="{xp}" />
+        <sprite depth="4" pos="53,14" height="12" width="700" color="[XPBarFill]" globalopacity="false" type="filled" fill="{xp}" />
+        
         <label type="TextContent" depth="5" pos="228,14" color="[black]" text="|" font_size="32" height="12" /><!-- 25% -->
         <label type="TextContent" depth="5" pos="403,14" color="[black]" text="|" font_size="32" height="12" /><!-- 50% -->
         <label type="TextContent" depth="5" pos="578,14" color="[black]" text="|" font_size="32" height="12" /><!-- 75% -->
@@ -38,7 +39,7 @@
             <sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
 
             <filledsprite depth="3" name="background" color="[mediumGrey_half_alpha]" width="169" type="filled" fill="{statmodifiedmax}" />
-            <filledsprite depth="5" name="BarContent" color="0,255,54,128" width="169" type="filled" fill="0" />
+            <filledsprite depth="5" name="BarContent" color="[FoodBarFill]" width="169" type="filled" fill="0" />
             
             <sprite depth="6" name="Icon" sprite="ui_game_symbol_fork" size="35,35" pos="26,-24" pivot="center" foregroundlayer="true"/>
             <label depth="4" name="TextContent" text="{# length(statfill)==0 ? '' : Round(float(statfill) * (cvar('$LastPlayerLevel') + 100)*.99,0)}/{# cvar('$LastPlayerLevel') + 100}" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" width="125" height="35" />
@@ -54,7 +55,7 @@
             <sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
 
             <filledsprite depth="3" name="background" color="[mediumGrey_half_alpha]" width="169" type="filled" fill="{statmodifiedmax}" />
-            <filledsprite depth="5" name="BarContent" color="0,54,255,160" width="169" type="filled" fill="0" />
+            <filledsprite depth="5" name="BarContent" color="[WaterBarFill]" width="169" type="filled" fill="0" />
             
             <sprite depth="6" name="Icon"  sprite="ui_game_symbol_water" size="35,35" pos="26,-24" pivot="center" foregroundlayer="true"/>
             <label depth="4" name="TextContent" text="{# length(statfill)==0 ? '' : Round(float(statfill) * (cvar('$LastPlayerLevel') + 100)*.99,0)}/{# cvar('$LastPlayerLevel') + 100}" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" width="125" height="35" effect="outline" effect_color="0,0,0" effect_distance="2"/>
@@ -74,10 +75,10 @@
         </rect>
 
         <rect anchor="CenterTop" pos="-150,-200" width="300" height="36" visible="{visible}" >
-            <sprite depth="3" name="border" color="0,0,0,255" type="sliced" width="300" globalopacity="false" fillcenter="false"/>
+            <sprite depth="3" name="border" color="[black]" type="sliced" width="300" globalopacity="false" fillcenter="false"/>
             <sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
 
-            <filledsprite depth="2" name="BarContent" type="filled" color="201,14,158,180" width="300" fill="{fill}" globalopacity="false"/> 
+            <filledsprite depth="2" name="BarContent" type="filled" color="[TargetHPBar]" width="300" fill="{fill}" globalopacity="false"/> 
             <label depth="3" name="TextContent" pos="0,-5" font_size="28" color="[white]" justify="center" pivot="topleft" text="{currentwithmax}" height="30" effect="shadow" effect_color="0,0,0,255" effect_distance="2,2"/>
         </rect>
     </append>
@@ -90,13 +91,13 @@
                 <label depth="3" name="TextContent" pos="5,-14" font_size="32" color="[white]" pivot="topleft" text="{locationname}" justify="center" width="290" height="60" effect="shadow" effect_color="0,0,0,255" effect_distance="2,2" />
 
                 <grid padding="8,10" pos="150,-65" pivot="center" cols="8" cell_width="34" cell_height="32">
-                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible1}"/>
-                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible2}"/>
-                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible3}"/>
-                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible4}"/>
-                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible5}"/>
-                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible6}"/>
-                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="214, 101, 73" visible="{visible7}"/>
+                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="[AreaSkullIcons]" visible="{visible1}"/>
+                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="[AreaSkullIcons]" visible="{visible2}"/>
+                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="[AreaSkullIcons]" visible="{visible3}"/>
+                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="[AreaSkullIcons]" visible="{visible4}"/>
+                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="[AreaSkullIcons]" visible="{visible5}"/>
+                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="[AreaSkullIcons]" visible="{visible6}"/>
+                    <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" color="[AreaSkullIcons]" visible="{visible7}"/>
 
                     <rect width="32" height="32" visible="{visible_half}">
                         <sprite depth="2" name="windowicon" style="icon32px" sprite="ui_game_symbol_skull" type="filled" fill="0.5" color="214,101,73"/>
@@ -105,22 +106,51 @@
                 </grid>
             </rect>
         </window>
-
+    </append>
+    
+    <!-- Area Indicator -->
+    <remove xpath="//window[@name='windowLocation']"/>
+    <append xpath="/windows">
+        <window name="windowLocation" pos="-259, -40" width="240" height="60" anchor="CenterTop" depth="-20" controller="Location">
+<!--            <sprite pos="0,6" name="Background" sprite="menu_empty" color="[darkestGrey]" height="46" width="250" type="sliced" />-->
+<!--            <sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,6" width="250" height="46" color="[black]" type="sliced" fillcenter="false" />-->
+            <label depth="3" text="{locationname}" font_size="20" justify="center" pos="6,2" height="28" />
+            <grid pos="125, -28" pivot="center" cols="8" cell_width="18" cell_height="16">
+                <sprite depth="2" name="windowicon" width="16" height="16" sprite="ui_game_symbol_skull" color="{difficultycolor1}" visible="{visible1}" />
+                <sprite depth="2" name="windowicon" width="16" height="16" sprite="ui_game_symbol_skull" color="{difficultycolor2}" visible="{visible2}"/>
+                <sprite depth="2" name="windowicon" width="16" height="16" sprite="ui_game_symbol_skull" color="{difficultycolor3}" visible="{visible3}"/>
+                <sprite depth="2" name="windowicon" width="16" height="16" sprite="ui_game_symbol_skull" color="{difficultycolor4}" visible="{visible4}"/>
+                <sprite depth="2" name="windowicon" width="16" height="16" sprite="ui_game_symbol_skull" color="{difficultycolor5}" visible="{visible5}"/>
+                <sprite depth="2" name="windowicon" width="16" height="16" sprite="ui_game_symbol_skull" color="{difficultycolor6}" visible="{visible6}"/>
+                <sprite depth="2" name="windowicon" width="16" height="16" sprite="ui_game_symbol_skull" color="{difficultycolor7}" visible="{visible7}"/>
+                <rect width="16" height="16" visible="{visible_half}">
+                    <sprite depth="2" name="windowicon" width="16" height="16" sprite="ui_game_symbol_skull" type="filled" fill="0.5" color="255,128,0"/>
+                    <sprite depth="2" name="windowicon" width="16" height="16" sprite="ui_game_symbol_skull" type="filled" fill="0.5" fillinvert="true"  color="[lightGrey]"/>
+                </rect>
+            </grid>
+        </window>
     </append>
 
     <!-- Compass cluster-->
-    <remove xpath="//window[@name='windowCompass']/sprite[last()]" /> 
-    <append xpath="//window[@name='windowCompass']">
-        <label depth="2" pos="78, -55"  width="50" height="24" text="[{daycolor}]{daytitle}: {day}[-]" font_size="22" pivot="center" effect="shadow" effect_color="0,0,0" effect_distance="1,1" upper_case="true" justify="left"/>
-        <label depth="2" pos="415, -55"  width="60" height="24" text="[dea3a3]{time}[-]" font_size="22" pivot="center" effect="shadow" effect_color="0,0,0" effect_distance="1,1" upper_case="true" justify="left"/>
+    <remove xpath="//window[@name='windowCompass']" /> 
+    <append xpath="/windows">
+        <window name="windowCompass" anchor="CenterTop" pos="-240,-9" width="480" height="43" controller="CompassWindow">
+            <texture depth="8" texture="Textures/UI/Compass/overlay-{compass_language}" pos="51, -9" width="380" height="27" color="[black]" name="dropshadowCompassTexture" rect_size="0.25,1" rect_offset="{#compass_rotation / 360 + 0.0625 - 0.125},0" />
+            <texture depth="9" texture="Textures/UI/Compass/overlay-{compass_language}" pos="50, -8" width="380" height="27" color="[CompassCluster]" name="compassTexture3" rect_size="0.25,1" rect_offset="{#compass_rotation / 360 + 0.0625 - 0.125},0" />
+<!--            <label depth="7" pos="228,-29" text="^" font_size="25" color="[CompassCaret]" effect="shadow" effect_color="[black]" effect_distance="1,1"/>-->
+            <label depth="7" pos="235,-29" text="^" font_size="25" color="[CompassCaret]" effect="shadow" effect_color="[black]" effect_distance="1,1"/>
 
-        <rect name="content" depth="5" pos="265,10" height="239" controller="MapStats">
+            <label depth="2" pos="78, -56"  width="50" height="24" text="[{daycolor}]{daytitle}: {day}[-]" font_size="23" pivot="center" effect="shadow" effect_color="0,0,0" effect_distance="1,1" upper_case="true" justify="left"/>
+            <label depth="2" pos="415, -55"  width="60" height="24" text="[dea3a3]{time}[-]" font_size="23" pivot="center" effect="shadow" effect_color="0,0,0" effect_distance="1,1" upper_case="true" justify="left"/>
+
+            <rect name="content" depth="5" pos="265,10" height="239" controller="MapStats">
                 <sprite depth="2" name="tempIcon" width="19" height="19" pos="0,-55" sprite="ui_game_symbol_temperature" color="[iconColor]" foregroundlayer="true"/>
                 <label depth="2" name="tempLabel" pos="22,-55" width="250" height="24" text="[a3dea3]{playercoretemp}[-]" font_size="22" effect="shadow" effect_color="0,0,0" effect_distance="1,1"/>
-              
+
                 <sprite depth="2" name="elevIcon" width="19" height="19" pos="-115,-55" sprite="ui_game_symbol_climb" color="[iconColor]" foregroundlayer="true"/>
-                <label depth="2" name="elevLabel" pos="-93,-55" width="250" height="24" text="[a3a3de]{mapelevation} M[-]" font_size="22" effect="shadow" effect_color="0,0,0" effect_distance="1,1"/> 
-        </rect>
+                <label depth="2" name="elevLabel" pos="-93,-55" width="250" height="24" text="[a3a3de]{mapelevation} M[-]" font_size="22" effect="shadow" effect_color="0,0,0" effect_distance="1,1"/>
+            </rect>
+        </window>
     </append>
     
     
@@ -133,8 +163,7 @@
 
             <rect pos="280,0" width="300" controller="ContainerStandardControls" move_start_bottom_left="true" is_backpack="true">
                 <button depth="3" name="btnClearInventory" sprite="ui_game_symbol_trash" tooltip_key="lblClearInventory" pos="-105, -22" style="icon32px, press, hover" pivot="center" sound="[paging_click]" visible="{creativewindowopen}" />
-<!--                <button depth="3" name="btnSort"           sprite="ui_game_symbol_sort"  tooltip_key="lblSortContainer"  pos="-65, -22" style="icon32px, press, hover" pivot="center" sound="[paging_click]" visible="{creativewindowopen}"/>-->
-                
+                <!-- Adjust the sort button based on if we are in creative menu or not. -->
                 <button depth="3" name="btnSort"           sprite="ui_game_symbol_sort"  tooltip_key="lblSortContainer"  pos="{# creativewindowopen ? '-65, -22' : '-105, -22'}" style="icon32px, press, hover" pivot="center" sound="[paging_click]" />
 
                 <rect pos="0, 0" visible="{lootingorvehiclestorage}">
@@ -155,4 +184,5 @@
     
     <!-- Change the icon for deleting quests to be less confusing.. -->
     <setattribute xpath="//window[@name='windowQuestList']/rect[@name='content']/rect[1]/button[@name='questRemoveBtn']" name="sprite">ui_game_symbol_trash</setattribute>
+    <setattribute xpath="//window[@name='windowQuestList']/rect[@name='content']/rect[1]/button[@name='questRemoveBtn']" name="color">173, 68, 77</setattribute>
 </configs>

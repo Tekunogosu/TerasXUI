@@ -1,0 +1,11 @@
+<styles>
+    <append xpath="//global">
+        <style_entry name="CompassCluster"  value="179,217,255,255"/>
+        <style_entry name="CompassCaret"    value="246,255,179,255"/>
+        <style_entry name="AreaSkullIcons"  value="214,101,73,255"/>
+        <style_entry name="WaterBarFill"    value="0,54,255,160"/>
+        <style_entry name="FoodBarFill"     value="0,255,54,160"/>
+        <style_entry name="XPBarFill"       value="73,71,181,255"/>
+        <style_entry name="TargetHPBar"     value="201,14,158,180"/>
+    </append>
+</styles>
