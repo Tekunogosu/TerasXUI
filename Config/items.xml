@@ -1,4 +1,9 @@
 <configs>
+
+    <insertAfter xpath="//item[@name='schematicMaster']/property[@name='ItemTypeIcon']">
+        <property name="IconColor" value="117, 70, 70"/>
+    </insertAfter>
+    
     <insertAfter xpath="//item[@name='schematicMaster']/property[@name='AltItemTypeIcon']">
         <property name="AltItemTypeIconColor" value="101, 214, 139"/>
     </insertAfter>

@@ -52,7 +52,7 @@
             <filledsprite depth="5" name="BarContent" color="[FoodBarFill]" width="169" type="filled" fill="0" />
             
             <sprite depth="7" name="Icon" sprite="ui_game_symbol_fork" size="35,35" pos="26,-24" pivot="center" foregroundlayer="true"/>
-            <label depth="6" name="TextContent" text="{# length(statfill)==0 ? '' : Round(float(statfill) * (cvar('$LastPlayerLevel') + 100)*.99,0)}/{# cvar('$LastPlayerLevel') + 100}" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" width="125" height="35" effect="shadow" effect_color="0,0,0" effect_distance="1,1" />
+            <label depth="6" name="TextContent" text="{statcurrentwithmax}" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" width="125" height="35" effect="shadow" effect_color="0,0,0" effect_distance="1,1" />
 
             <sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
             <filledsprite depth="8" name="background" color="0,0,0,255" width="171" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
@@ -68,7 +68,7 @@
             <filledsprite depth="5" name="BarContent" color="[WaterBarFill]" width="169" type="filled" fill="0" />
             
             <sprite depth="7" name="Icon"  sprite="ui_game_symbol_water" size="35,35" pos="26,-24" pivot="center" foregroundlayer="true"/>
-            <label depth="6" name="TextContent" text="{# length(statfill)==0 ? '' : Round(float(statfill) * (cvar('$LastPlayerLevel') + 100)*.99,0)}/{# cvar('$LastPlayerLevel') + 100}" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" width="125" height="35" effect="shadow" effect_color="0,0,0" effect_distance="1,1"/>
+            <label depth="6" name="TextContent" text="{statcurrentwithmax}" pos="44,-23" font_size="32" color="[white]" justify="center" pivot="left" width="125" height="35" effect="shadow" effect_color="0,0,0" effect_distance="1,1"/>
 
             <sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
             <filledsprite depth="8" name="background" color="0,0,0,255" width="171" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
