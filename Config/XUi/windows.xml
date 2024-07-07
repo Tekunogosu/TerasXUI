@@ -11,34 +11,28 @@
     <!-- Adjust the exp bar to make it more visible -->
     <remove xpath="//window[@name='windowToolbelt']/rect/sprite[2 and 3 and 4]" />
     <append xpath="//window[@name='windowToolbelt']/rect">
+        <label name="teraxui_lvllabel" depth="1" type="TextContent" text="LEVEL: {cvar($LastPlayerLevel)}" pos="4,14" font_size="12" height="20" width="75" color="[gold]" effect="shadow" effect_color="0,0,0" effect_distance="1,1"/>
         
-        <!-- Compatibility with Khaines 15SlotToolbelt -->
-        <conditional>
-            <if cond="mod_loaded('15SlotToolbelt')">
-                <!-- Add unobtrusive level indicator -->
-                <label depth="1" name="TextContent" text="LEVEL: {cvar($LastPlayerLevel)}" pos="4,14" font_size="12" height="20" width="75" color="[gold]" effect="shadow" effect_color="0,0,0" effect_distance="1,1"/>
-                <sprite depth="1" pos="58,14" height="12" width="1070" color="64,64,64,200" sprite="menu_empty2px" globalopacity="false" type="sliced" />
-                <sprite depth="9" pos="58,14" height="12" width="1070" color="0,0,0,220" sprite="menu_empty2px" globalopacity="false" type="sliced" fillcenter="false" />
-                <sprite depth="4" pos="58,14" height="12" width="1070" color="[XPBarFill]" globalopacity="false" type="filled" fill="{xp}" />
-                
-                <label type="TextContent" depth="5" pos="327,14" color="[black]" text="|" font_size="32" height="12" /><!-- 25% -->
-                <label type="TextContent" depth="5" pos="598,14" color="[black]" text="|" font_size="32" height="12" /><!-- 50% -->
-                <label type="TextContent" depth="5" pos="868,14" color="[black]" text="|" font_size="32" height="12" /><!-- 75% -->
-            </if>
-            <else>
-                <!-- Add unobtrusive level indicator -->
-                <label depth="1" name="TextContent" text="LEVEL: {cvar($LastPlayerLevel)}" pos="4,14" font_size="12" height="20" width="75" color="[gold]" effect="shadow" effect_color="0,0,0" effect_distance="1,1"/>
-                <sprite depth="1" pos="58,14" height="12" width="695" color="64,64,64,200" sprite="menu_empty2px" globalopacity="false" type="sliced" />
-                <sprite depth="9" pos="58,14" height="12" width="695" color="0,0,0,220" sprite="menu_empty2px" globalopacity="false" type="sliced" fillcenter="false" />
-                <sprite depth="4" pos="58,14" height="12" width="695" color="[XPBarFill]" globalopacity="false" type="filled" fill="{xp}" />
-                
-                <label type="TextContent" depth="5" pos="233,14" color="[black]" text="|" font_size="32" height="12" /><!-- 25% -->
-                <label type="TextContent" depth="5" pos="408,14" color="[black]" text="|" font_size="32" height="12" /><!-- 50% -->
-                <label type="TextContent" depth="5" pos="583,14" color="[black]" text="|" font_size="32" height="12" /><!-- 75% -->
-            </else>
-        </conditional>
-        <!-- *************************************** -->
+        <sprite name="teraxui_xpborder" depth="1" pos="58,14" height="12" width="695" color="64,64,64,200" sprite="menu_empty2px" globalopacity="false" type="sliced" />
+        <sprite name="teraxui_xpborder2" depth="9" pos="58,14" height="12" width="695" color="0,0,0,220" sprite="menu_empty2px" globalopacity="false" type="sliced" fillcenter="false" />
+        <sprite name="teraxui_xpbarfill" depth="4" pos="58,14" height="12" width="695" color="[XPBarFill]" globalopacity="false" type="filled" fill="{xp}" />
+
+        <label name="teraxui_xp25" type="TextContent" depth="5" pos="233,14" color="[black]" text="|" font_size="32" height="12" /><!-- 25% -->
+        <label name="teraxui_xp50" type="TextContent" depth="5" pos="408,14" color="[black]" text="|" font_size="32" height="12" /><!-- 50% -->
+        <label name="teraxui_xp75" type="TextContent" depth="5" pos="583,14" color="[black]" text="|" font_size="32" height="12" /><!-- 75% -->
     </append>
+
+    <conditional>
+        <if cond="mod_loaded('15SlotToolbelt')">
+            <setattribute xpath="//sprite[@name='teraxui_xpborder']"  name="width">1070</setattribute>
+            <setattribute xpath="//sprite[@name='teraxui_xpborder2']" name="width">1070</setattribute>
+            <setattribute xpath="//sprite[@name='teraxui_xpbarfill']" name="width">1070</setattribute>
+            
+            <setattribute xpath="//label[@name='teraxui_xp25']" name="pos">327,14</setattribute>
+            <setattribute xpath="//label[@name='teraxui_xp50']" name="pos">598,14</setattribute>
+            <setattribute xpath="//label[@name='teraxui_xp75']" name="pos">868,14</setattribute>
+        </if>
+    </conditional>
 
     <!-- Adjust the sprint indicator so our bars don't overlap -->
     <setattribute xpath="//window[@name='HUDLeftStatBars']/rect[1]/rect[2]/sprite[@name='sprint']" name="pos">170,28</setattribute>
