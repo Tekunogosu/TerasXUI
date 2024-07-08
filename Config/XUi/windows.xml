@@ -22,18 +22,6 @@
         <label name="teraxui_xp75" type="TextContent" depth="5" pos="583,14" color="[black]" text="|" font_size="32" height="12" /><!-- 75% -->
     </append>
 
-    <conditional>
-        <if cond="mod_loaded('15SlotToolbelt')">
-            <setattribute xpath="//sprite[@name='teraxui_xpborder']"  name="width">1070</setattribute>
-            <setattribute xpath="//sprite[@name='teraxui_xpborder2']" name="width">1070</setattribute>
-            <setattribute xpath="//sprite[@name='teraxui_xpbarfill']" name="width">1070</setattribute>
-            
-            <setattribute xpath="//label[@name='teraxui_xp25']" name="pos">327,14</setattribute>
-            <setattribute xpath="//label[@name='teraxui_xp50']" name="pos">598,14</setattribute>
-            <setattribute xpath="//label[@name='teraxui_xp75']" name="pos">868,14</setattribute>
-        </if>
-    </conditional>
-
     <!-- Adjust the sprint indicator so our bars don't overlap -->
     <setattribute xpath="//window[@name='HUDLeftStatBars']/rect[1]/rect[2]/sprite[@name='sprint']" name="pos">170,28</setattribute>
     
@@ -87,7 +75,7 @@
     <remove xpath="//window[@name='windowTargetBar']/rect"/>
     <setattribute xpath="//window[@name='windowTargetBar']" name="visibility">always</setattribute>
     <append xpath="//window[@name='windowTargetBar']">
-        <rect anchor="CenterTop" pos="-150,-175" width="150" height="24" visible="{visible}">
+        <rect anchor="CenterTop" pos="-150,-175" width="300" height="24" visible="{visible}">
             <label depth="1" name="TextContent" pos="0, -5" font_size="20" color="[white]" justify="left" text="{name}" height="20" effect="shadow" effect_color="0,0,0,255" effect_distance="2,2"/>
         </rect>
 
@@ -179,17 +167,12 @@
     <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']/rect[1]/button[@name='btnMoveFillAndSmart']" name="pos">-65, -22</setattribute>
     <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']/rect[1]/button[@name='btnMoveAll']" name="pos">-25, -22</setattribute>
 
-    <remove xpath="//window[@name='windowBackpack']/panel[@name='header']/label[@pos='492,-8']"/>
+    <remove xpath="//window[@name='windowBackpack']/panel[@name='header']/label[@text='{currencyamount}']"/>
     <append xpath="//window[@name='windowBackpack']/panel[@name='header']">
         <label depth="2" pos="492,-8" width="80" height="28" text="{currencyamount}" justify="right" color="124, 232, 109"/>
     </append>
     
-    <conditional> <!-- Quicksort Compatibility -->
-        <if cond="mod_loaded('QuickStack')">
-            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickRestock']" name="pos">-10, -22</setattribute>
-            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickStack']" name="pos">-55, -22</setattribute>
-        </if>
-    </conditional><!-- ********************* -->
+    
     
     <!-- Show skill points on the book and perk tab too, like why is this not here by default?? -->
     <setattribute xpath="//window[@name='windowSkillList']/panel[@name='header']/label[2]" name="visible">{visible}</setattribute>
@@ -197,4 +180,40 @@
     <!-- Change the icon for deleting quests to be less confusing.. -->
     <setattribute xpath="//window[@name='windowQuestList']/rect[@name='content']/rect[1]/button[@name='questRemoveBtn']" name="sprite">ui_game_symbol_trash</setattribute>
     <setattribute xpath="//window[@name='windowQuestList']/rect[@name='content']/rect[1]/button[@name='questRemoveBtn']" name="color">173, 68, 77</setattribute>
+
+    <!-- Compatibility Code -->
+    
+    <conditional> <!-- Quicksort Compatibility -->
+        <if cond="mod_loaded('QuickStack')">
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickRestock']" name="pos">-10, -22</setattribute>
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickStack']" name="pos">-55, -22</setattribute>
+        </if>
+    </conditional><!-- ********************* -->
+
+    <conditional><!-- Khaines 15 Slot Toolbelt -->
+        <if cond="mod_loaded('15SlotToolbelt')">
+            <setattribute xpath="//sprite[@name='teraxui_xpborder']"  name="width">1070</setattribute>
+            <setattribute xpath="//sprite[@name='teraxui_xpborder2']" name="width">1070</setattribute>
+            <setattribute xpath="//sprite[@name='teraxui_xpbarfill']" name="width">1070</setattribute>
+
+            <setattribute xpath="//label[@name='teraxui_xp25']" name="pos">327,14</setattribute>
+            <setattribute xpath="//label[@name='teraxui_xp50']" name="pos">598,14</setattribute>
+            <setattribute xpath="//label[@name='teraxui_xp75']" name="pos">868,14</setattribute>
+        </if>
+    </conditional><!-- ********************* -->
+    
+    <conditional><!-- Dewtas Better Backpack -->
+        <if cond="mod_loaded('DewtasBetterBackpack')">
+            <setattribute xpath="//label[@text='{currencyamount}']" name="pos">1130,-14</setattribute>
+            <setattribute xpath="//label[@name='teraxui_lvllabel']" name="pos">0,18</setattribute>
+            <setattribute xpath="//sprite[@name='teraxui_xpborder']" name="pos">54,18</setattribute>
+            <setattribute xpath="//sprite[@name='teraxui_xpborder2']" name="pos">54,18</setattribute>
+            <setattribute xpath="//sprite[@name='teraxui_xpbarfill']" name="pos">54,18</setattribute>
+
+            <setattribute xpath="//label[@name='teraxui_xp25']" name="pos">323,18</setattribute>
+            <setattribute xpath="//label[@name='teraxui_xp50']" name="pos">594,18</setattribute>
+            <setattribute xpath="//label[@name='teraxui_xp75']" name="pos">864,18</setattribute>
+        </if>
+    </conditional><!-- ********************* -->
+    
 </configs>
