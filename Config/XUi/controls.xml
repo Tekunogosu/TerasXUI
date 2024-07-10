@@ -1,6 +1,30 @@
 <configs>
-    <!-- Need to do more testing before I release this. -->
-<!--    <setattribute xpath="/controls/item_stack/rect/sprite[@name='quickswapIcon']" name="pos">30,5</setattribute>-->
-<!--    <setattribute xpath="/controls/item_stack/rect/sprite[@name='quickswapIcon']" name="size">24,24</setattribute>-->
-<!--    <setattribute xpath="/controls/item_stack/rect/sprite[@name='quickswapIcon']" name="color">64,64,64,128</setattribute>-->
+  
+    <append xpath="/controls">
+        <terasxui_recipe_entry>
+            <rect width="79" height="79" style="press, hover, scroll" controller="RecipeEntry" disabled_font_color="[disabledLabelColor]" enabled_font_color="[labelColor]" sound="[recipe_click]" sound_play_on_hover="[default_hover]" >
+                <sprite depth="3" name="background" width="76" height="76" pos="1,-1" color="160,160,160,220" type="sliced" globalopacity="false" />
+                <sprite depth="4" name="Icon" atlas="ItemIconAtlas" sprite="{recipeicon}" color="{recipeicontint}" size="64,64" pos="39,-39" pivot="center" foregroundlayer="true"/>
+                <sprite depth="4" name="Unlocked" sprite="{unlockicon}" size="20,20" pos="55,-55" visible="{isunlockable}" color="{unlockstatecolor}" foregroundlayer="true" />
+                <sprite depth="5" name="Favorite" sprite="server_favorite" size="16,16" pos="5,-55" visible="{isfavorite}" foregroundlayer="true"/>
+                <sprite depth="8" name="itemtypeicon" width="14" height="14" sprite="ui_game_symbol_{itemtypeicon}" pos="5,-5" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
+            </rect>
+        </terasxui_recipe_entry> 
+        
+        <terasxui_crafting_queue>
+            <rect controller="RecipeStack" width="77" height="78" collider_scale="2.0">
+                <sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="78" height="78" color="0,0,0,255" type="sliced" fillcenter="false" />
+                <sprite name="background" color="96,96,96,255" type="sliced" style="press" on_hover="true"/>
+                
+                <sprite depth="1" name="itemIcon" width="70" height="70" atlas="ItemIconAtlas" sprite="" pos="39,-39" pivot="center" foregroundlayer="true"/>
+                <sprite depth="3" name="lockIcon" width="24" height="24" sprite="ui_game_symbol_hammer" pos="3,-3" visible="false" foregroundlayer="true"/>
+                
+                <label depth="3" name="count" pos="-2,-53" width="75" height="26" text="Test" font_size="22" justify="right" effect="outline" effect_distance="1,1" effect_color="0,0,0,255" />
+                <label depth="3" name="timer" pos="39,-39" width="75" height="26" font_size="24" justify="center" pivot="center" color="[limeGreen]" effect="outline" effect_distance="1,1" effect_color="0,0,0,255"/>
+                
+<!--                <sprite depth="4" name="overlay" width="77" height="77" color="32,32,32,128" type="sliced"/>-->
+                <sprite depth="5" name="cancel" sprite="ui_game_symbol_x" width="78" height="78" color="255,0,0,0" type="sliced" visible="false" foregroundlayer="true"/>
+            </rect>
+        </terasxui_crafting_queue>
+    </append>
 </configs>

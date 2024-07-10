@@ -172,8 +172,61 @@
         <label depth="2" pos="492,-8" width="80" height="28" text="{currencyamount}" justify="right" color="124, 232, 109"/>
     </append>
     
+    <!--  *************  -->
     
+    <!-- Crafting Window -->
+    <remove xpath="//window[@name='windowCraftingList']/panel[@name='content']/rect[@name='categorySelector']" />
     
+    <setattribute xpath="//window[@name='windowCraftingList']" name="width">396</setattribute>
+    <setattribute xpath="//window[@name='windowCraftingList']/panel[@name='header']" name="width">394</setattribute>
+    <setattribute xpath="//window[@name='windowCraftingList']/panel[@name='content']" name="pos">-20,-43</setattribute>
+    
+    <insertBefore xpath="//window[@name='windowCraftingList']/panel[@name='content']">
+        <rect depth="2" name="categorySelector" width="390" height="44" pos="-3,-40">
+            <sprite name="backgroundMain" sprite="menu_empty3px" pos="-50,-6" width="49" height="396" color="0,0,0,200" type="sliced" fillcenter="true" />
+            <grid name="categories" pos="-25,-33" rows="9" cols="1" width="43" height="390" cell_width="43" cell_height="43" repeat_content="true" controller="CategoryList">
+                <category_icon />
+            </grid>
+        </rect>
+    </insertBefore>
+    
+    <setattribute xpath="//window[@name='windowCraftingList']/panel[@name='content']/rect[@name='searchControls']" name="pos">23,-6</setattribute>
+    <setattribute xpath="//window[@name='windowCraftingList']/panel[@name='content']/rect[@name='searchControls']" name="width">394</setattribute>
+    <setattribute xpath="//window[@name='windowCraftingList']/panel[@name='content']/rect[@name='searchControls']/sprite[@name='backgroundMain']" name="width">394</setattribute>
+    <setattribute xpath="//window[@name='windowCraftingList']/panel[@name='content']/rect[@name='searchControls']/sprite[2]" name="width">388</setattribute>
+    <setattribute xpath="//window[@name='windowCraftingList']/panel[@name='content']/rect[@name='searchControls']/panel[2]" name="pos">283,0</setattribute>
+    <setattribute xpath="//window[@name='windowCraftingList']/panel[@name='content']/grid[@name='recipes']" name="pos">23,-53</setattribute>
+    
+    <remove xpath="//window[@name='windowCraftingList']/panel[@name='content']/grid[@name='recipes']"/>
+    
+    <append xpath="//window[@name='windowCraftingList']/panel[@name='content']">
+        <sprite depth="1" name="backgroundMain" sprite="menu_empty3px" pos="20,-50" width="394" height="473" color="[black]" type="sliced" fillcenter="true" />
+        <grid name="recipes" rows="6" cols="5" pos="22,-53" width="390" height="468" cell_width="78" cell_height="78" controller="RecipeList" repeat_content="true"  >
+            <terasxui_recipe_entry name="0"/>
+        </grid>
+    </append>
+    
+    <!-- Align the crafting queue and add more slots, unless you have khaines mod, then just load his and move it up a bit. --> 
+    <conditional>
+        <if cond="!mod_loaded('12SlotCraftQueue')">
+            <remove xpath="//window[@name='windowCraftingQueue']/rect"/>
+            <append xpath="//window[@name='windowCraftingQueue']">
+                <rect depth="1" pos="2,80" width="394" height="" controller="CraftingQueue">
+                    <grid name="queue" rows="2" cols="5" pos="0,-13" cell_width="78" cell_height="78" repeat_content="true">
+                        <terasxui_crafting_queue name="0"/>
+                    </grid>
+                </rect>
+            </append>
+        </if>
+    </conditional>
+    <conditional>
+        <if cond="mod_loaded('12SlotCraftQueue')"> <!-- Adjust the crafting window so it fits better with the UI -->
+            <setattribute xpath="//window[@name='windowCraftingQueue']/rect" name="pos">-52,-15</setattribute>
+        </if>
+    </conditional>
+    <!-- ******************** -->
+    
+
     <!-- Show skill points on the book and perk tab too, like why is this not here by default?? -->
     <setattribute xpath="//window[@name='windowSkillList']/panel[@name='header']/label[2]" name="visible">{visible}</setattribute>
     
