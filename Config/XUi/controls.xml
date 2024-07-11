@@ -2,11 +2,14 @@
   
     <append xpath="/controls">
         <terasxui_recipe_entry>
-            <rect width="79" height="79" style="press, hover, scroll" controller="RecipeEntry" disabled_font_color="[disabledLabelColor]" enabled_font_color="[labelColor]" sound="[recipe_click]" sound_play_on_hover="[default_hover]" >
+            <rect width="79" height="79" style="press, hover, scroll" controller="RecipeEntry" disabled_font_color="[black]" enabled_font_color="0,255,0" sound="[recipe_click]" sound_play_on_hover="[default_hover]" >
                 <sprite depth="3" name="background" width="76" height="76" pos="1,-1" color="160,160,160,220" type="sliced" globalopacity="false" />
-                <sprite depth="4" name="Icon" atlas="ItemIconAtlas" sprite="{recipeicon}" color="{recipeicontint}" size="64,64" pos="39,-39" pivot="center" foregroundlayer="true"/>
-                <sprite depth="4" name="Unlocked" sprite="{unlockicon}" size="20,20" pos="55,-55" visible="{isunlockable}" color="{unlockstatecolor}" foregroundlayer="true" />
-                <sprite depth="5" name="Favorite" sprite="server_favorite" size="16,16" pos="5,-55" visible="{isfavorite}" foregroundlayer="true"/>
+                <!-- Can I make it? Indicator -->
+                <sprite depth="4" name="backgroundMain" width="76" height="76" pos="1,-1" color="{hasingredientsstatecolor}" type="sliced" globalopacity="false" fillcenter="false" />
+                <!-- ******* -->
+                <sprite depth="5" name="Icon" atlas="ItemIconAtlas" sprite="{recipeicon}" color="{recipeicontint}" size="64,64" pos="39,-39" pivot="center" foregroundlayer="true"/>
+                <sprite depth="5" name="Unlocked" sprite="{unlockicon}" size="20,20" pos="55,-55" visible="{isunlockable}" color="{unlockstatecolor}" foregroundlayer="true" />
+                <sprite depth="6" name="Favorite" sprite="server_favorite" size="16,16" pos="5,-55" visible="{isfavorite}" foregroundlayer="true"/>
                 <sprite depth="8" name="itemtypeicon" width="14" height="14" sprite="ui_game_symbol_{itemtypeicon}" pos="5,-5" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
             </rect>
         </terasxui_recipe_entry> 
