@@ -269,4 +269,17 @@
         </if>
     </conditional><!-- ********************* -->
     
+    <conditional>
+        <if cond="mod_loaded('CTVI_SLOTS')">
+            <!-- move the quick sort items, lock dial, and currency so they make sense with CTVI Slots  -->
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']/combobox[@name='cbxLockedSlots']" name="pos">5,-7</setattribute>
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']/button[@name='btnClearInventory']" name="pos">150, -22</setattribute>
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']/rect[1]/button[@name='btnMoveFillAndSmart']" name="pos">200, -22</setattribute>
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']/rect[1]/button[@name='btnMoveAll']" name="pos">250, -22</setattribute>
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']/button[@name='btnSort']" name="pos">150, -22</setattribute>
+            <setattribute xpath="//label[@text='{currencyamount}']" name="pos">875,-10</setattribute>
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/sprite[@name='costIcon']" name="pos">965,-10</setattribute>
+        </if>
+    </conditional>
+    
 </configs>
