@@ -236,12 +236,7 @@
 
     <!-- Compatibility Code -->
     
-    <conditional> <!-- Quicksort Compatibility -->
-        <if cond="mod_loaded('QuickStack')">
-            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickRestock']" name="pos">-10, -22</setattribute>
-            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickStack']" name="pos">-55, -22</setattribute>
-        </if>
-    </conditional><!-- ********************* -->
+    
 
     <conditional><!-- Khaines 15 Slot Toolbelt -->
         <if cond="mod_loaded('15SlotToolbelt')">
@@ -269,6 +264,13 @@
         </if>
     </conditional><!-- ********************* -->
     
+    <conditional> <!-- Quicksort Compatibility -->
+        <if cond="mod_loaded('QuickStack')">
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickRestock']" name="pos">-10, -22</setattribute>
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickStack']" name="pos">-55, -22</setattribute>
+        </if>
+    </conditional><!-- ********************* -->
+    
     <conditional>
         <if cond="mod_loaded('CTVI_SLOTS')">
             <!-- move the quick sort items, lock dial, and currency so they make sense with CTVI Slots  -->
@@ -279,7 +281,16 @@
             <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']/button[@name='btnSort']" name="pos">150, -22</setattribute>
             <setattribute xpath="//label[@text='{currencyamount}']" name="pos">875,-10</setattribute>
             <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/sprite[@name='costIcon']" name="pos">965,-10</setattribute>
+            
+            <conditional> <!-- QuickStack -->
+                <if cond="mod_loaded('QuickStack')">
+                    <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickRestock']" name="pos">200, -22</setattribute>
+                    <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickStack']" name="pos">240, -22</setattribute>
+                </if>
+            </conditional>
+            
         </if>
     </conditional>
+    
     
 </configs>
