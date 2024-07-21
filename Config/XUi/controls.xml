@@ -30,4 +30,19 @@
             </rect>
         </terasxui_crafting_queue>
     </append>
+    
+    <remove xpath="//button[@name='rectSlotLock']"/>
+    <remove xpath="//sprite[@name='iconSlotLock']"/>
+
+<!--    <setattribute xpath="//backpack_item_stack/rect[1]/sprite[@name='highlightOverlay']" name="depth">5</setattribute>-->
+    <setattribute xpath="//backpack_item_stack/rect[1]/sprite[@name='background']" name="depth">3</setattribute>
+    <append xpath="//backpack_item_stack/rect">
+        <button name="rectSlotLock" depth="15" style="press, hover" width="65" height="65" visible="{userlockmode}" sprite="" hoverscale="1" use_selection_box="true">
+            <sprite depth="16" name="button" width="24" height="24" sprite="{# userlockedslot ? 'ui_game_symbol_lock' : 'ui_game_symbol_unlock' }" pos="50, -14" style="icon32px" pivot="center" color="{# userlockedslot ? '219,59,67' : '255,255,255' }" />
+            <sprite depth="4" name="background" sprite="menu_empty3px" width="65" height="65" pos="0,0" color="219,59,67,210" type="sliced" globalopacity="false" fillcenter="false"  visible="{# userlockedslot}"/>
+        </button>
+<!--        <sprite depth="15" name="iconSlotLock" width="20" height="20" pos="50, -14" style="icon32px" pivot="center" visible="{# userlockedslot and !userlockmode}" color="[lightGrey]" />-->
+        <sprite depth="4" name="background" sprite="menu_empty3px" width="65" height="65" pos="0,0" color="219,0,0,210" type="sliced" globalopacity="false" fillcenter="false"  visible="{# userlockedslot and !userlockmode}"/>
+    </append>
+    
 </configs>
