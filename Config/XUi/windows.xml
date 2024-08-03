@@ -236,8 +236,6 @@
 
     <!-- Compatibility Code -->
     
-    
-
     <conditional><!-- Khaines 15 Slot Toolbelt -->
         <if cond="mod_loaded('15SlotToolbelt')">
             <setattribute xpath="//sprite[@name='teraxui_xpborder']"  name="width">1070</setattribute>
