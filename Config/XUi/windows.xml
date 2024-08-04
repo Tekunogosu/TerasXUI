@@ -266,6 +266,9 @@
         <if cond="mod_loaded('QuickStack')">
             <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickRestock']" name="pos">-10, -22</setattribute>
             <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickStack']" name="pos">-55, -22</setattribute>
+
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickRestock']" name="visibility">{# !creative ? 'always' : 'never'}</setattribute>
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickStack']" name="visibility">{# !creative ? 'always' : 'never'}</setattribute>
         </if>
     </conditional><!-- ********************* -->
     
@@ -287,6 +290,27 @@
                 </if>
             </conditional>
             
+        </if>
+    </conditional>
+    
+    <conditional>
+        <if cond="mod_loaded('InventorySearchBar_A88')">
+
+            <!-- Shift all the buttons to the right of the search bar, this is easier -->
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']/button[@name='btnToggleLockMode']" name="pos">0,-22</setattribute>
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[1]/button[@name='btnSort']" name="pos">40, -22</setattribute>
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']/rect[1]/button[@name='btnMoveFillAndSmart']" name="pos">80, -22</setattribute>
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']/rect[1]/button[@name='btnMoveAll']" name="pos">120, -22</setattribute>
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[1]/button[@name='btnClearInventory']" name="pos">80,-22</setattribute>
+            <!-- Search bar -->
+            <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect[@controller='ContainerStandardControls']/rect[@name='A88_search']" name="pos">-220,-7</setattribute>
+            
+            <conditional>
+                <if cond="mod_loaded('QuickStack')">
+                    <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickRestock']" name="pos">175, -22</setattribute>
+                    <setattribute xpath="//window[@name='windowBackpack']/panel[@name='header']/rect/rect/button[@name='btnMoveQuickStack']" name="pos">200, -22</setattribute>
+                </if>
+            </conditional>
         </if>
     </conditional>
     
