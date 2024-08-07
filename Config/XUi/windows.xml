@@ -248,6 +248,30 @@
         </if>
     </conditional><!-- ********************* -->
     
+    <conditional><!-- HotkeyFor15ToolBelt - Pretty much directly copied from that mod, but their xpath was garbage and didn't load correctly. So this works.-->
+        <if cond="mod_loaded('TYW-HotkeyFor15SlotToolbelt')">
+            <append xpath="//window[@name='windowToolbelt']/rect">
+                <rect name="hotkey_labels" pos="3, -3">
+                    <label depth="20" pos="0,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot1}"/>
+                    <label depth="20" pos="75,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot2}"/>
+                    <label depth="20" pos="150,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot3}"/>
+                    <label depth="20" pos="225,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot4}"/>
+                    <label depth="20" pos="300,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot5}"/>
+                    <label depth="20" pos="375,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot6}"/>
+                    <label depth="20" pos="450,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot7}"/>
+                    <label depth="20" pos="525,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot8}"/>
+                    <label depth="20" pos="600,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot9}"/>
+                    <label depth="20" pos="675,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot10}"/>
+                    <label depth="20" pos="750,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot11}"/>
+                    <label depth="20" pos="825,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot12}"/>
+                    <label depth="20" pos="900,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot13}"/>
+                    <label depth="20" pos="975,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot14}"/>
+                    <label depth="20" pos="1050,0" width="75" height="15" font_size="14" effect="outline" effect_distance="1,1" effect_color="0, 0, 0, 255" color="" justify="center" text="{slot15}"/>
+                </rect>
+            </append>
+        </if>
+    </conditional>
+    
     <conditional><!-- Dewtas Better Backpack -->
         <if cond="mod_loaded('DewtasBetterBackpack')">
             <setattribute xpath="//label[@text='{currencyamount}']" name="pos">1130,-14</setattribute>
